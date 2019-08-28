@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coffee.ssm.mapper.MemberMapper">
+  <resultMap id="MemberResultMap" type="com.coffee.ssm.entity.Member">
+      <id property="mid" column="mid"/>
+    <result property="memberId" column="member_id"/>
+    <result property="memberName" column="member_name"/>
+    <result property="memberScore" column="member_score"/>
+    <result property="memberPhone" column="member_phone"/>
+    <result property="birthday" column="birthday"/>
+    <result property="registerTime" column="register_time"/>
+    <result property="registerShopId" column="register_shop_id"/>
+    <result property="memberLevel" column="member_level"/>
+      <association property="shop" javaType="com.coffee.ssm.entity.Shop">
+          <id property="sid" column="sid"/>
+          <result property="shopId" column="shop_id"/>
+          <result property="shopName" column="shop_name"/>
+          <result property="shopAddr" column="shop_addr"/>
+          <result property="sManageName" column="s_manage_name"/>
+      </association>
+
+  </resultMap>
+
+
+  <select id="findAll" resultMap="MemberResultMap">
+    SELECT m.member_id,
+           m.member_name,
+           m.member_score,
+           m.member_phone,
+           m.birthday,
+           m.register_time,
+           m.member_level,
+           s.shop_name,
+           s.shop_addr,
+           s.s_manage_name
+           FROM member m LEFT JOIN shop s ON m.register_shop_id = s.shop_id
+  </select>
+
+</mapper>
