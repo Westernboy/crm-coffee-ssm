@@ -21,6 +21,7 @@ public interface MemberService {
      * 所有的会员信息
      * @return
      * @throws Exception
+     *
      */
     List<Member> findAll() throws Exception;
 
@@ -31,4 +32,10 @@ public interface MemberService {
      */
     Member findById() throws Exception;
 
+    /**
+     * 注销账号
+     * @throws Exception
+     * @return
+     */
+    int updateIsDelete() throws Exception;
 }

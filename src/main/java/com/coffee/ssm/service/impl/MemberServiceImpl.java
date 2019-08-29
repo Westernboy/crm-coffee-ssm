@@ -3,7 +3,6 @@ package com.coffee.ssm.service.impl;
 import com.coffee.ssm.entity.Member;
 import com.coffee.ssm.mapper.MemberMapper;
 import com.coffee.ssm.service.MemberService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -35,7 +34,11 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.findById("memberId");
     }
 
-
+    @Override
+    public int updateIsDelete() throws Exception {
+        memberMapper.updateIsDelete();
+        return 0;
+    }
 
 
 }

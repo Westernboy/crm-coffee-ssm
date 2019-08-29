@@ -11,6 +11,7 @@
     <result property="registerTime" column="register_time"/>
     <result property="registerShopId" column="register_shop_id"/>
     <result property="memberLevel" column="member_level"/>
+      <result property="isDelete" column="is_delete"/>
       <association property="shop" javaType="com.coffee.ssm.entity.Shop">
           <id property="sid" column="sid"/>
           <result property="shopId" column="shop_id"/>
@@ -36,6 +37,10 @@
            s.s_manage_name
            FROM member m LEFT JOIN shop s ON m.register_shop_id = s.shop_id
   </select>
+
+
+
+
 
   <insert id="create" parameterType="int">
     INSERT INTO member(
@@ -73,7 +78,9 @@
         FROM member m LEFT JOIN shop s ON m.register_shop_id = s.shop_id
         WHERE m.member_id = #{memberId}
     </select>
-
+    <update id="updateIsDelete">
+        UPDATE member SET is_delete = 1 WHERE is_delete = 0;
+    </update>
 
 
 </mapper>

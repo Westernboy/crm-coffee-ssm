@@ -5,6 +5,7 @@ import com.coffee.ssm.service.MemberService;
 import com.coffee.ssm.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -30,6 +31,28 @@ public class MemberController {
             e.printStackTrace();
         }
         return Result.error();
+    }
+/*    @RequestMapping("list")
+    public Result<List<Member>> memberList(@RequestParam(name = "page", required = true, defaultValue ="1") int page, @RequestParam(name = "size", required = true, defaultValue = "4") int Size) {
+        try {
+            List<Member> memberList = memberService.findAll(page, Size);
+            PageInfo pageInfo = new PageInfo(memberList);
+            return Result.success(pageInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return Result.error();
+    }*/
+
+    @RequestMapping("/delete")
+    public Result deleteMember(@RequestParam("memberId") String memberId){
+        try {
+            int m = memberService.updateIsDelete();
+            return Result.success(m);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @RequestMapping("/create")

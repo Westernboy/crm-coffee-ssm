@@ -37,4 +37,5 @@ public interface MemberMapper {
     Member findById(@Param("memberId") String memberId);
 
 
+    void updateIsDelete() throws Exception;
 }
