@@ -30,6 +30,24 @@ public class MemberController {
             e.printStackTrace();
         }
         return Result.error();
+    }
+
+    @RequestMapping("/create")
+    public void creat( Member member) throws Exception {
+        memberService.create(member);
 
     }
+    @RequestMapping("/findMember")
+    public Result<Member> Member( String memberId){
+
+            try {
+                Member member = memberService.findById();
+            return Result.success(member);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.error();
+    }
+
+
 }

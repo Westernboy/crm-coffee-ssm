@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
+/**
+ * @author 陈俊旭
+ */
 @Data
 public class Member implements Serializable {
     /**
@@ -55,6 +58,11 @@ public class Member implements Serializable {
      * 会员卡等级
      */
     private String memberLevel;
+
+    /**
+     * 0会员卡正常,1注销
+     */
+    private String isDelete;
 
     private Shop shop;
 }

@@ -11,12 +11,24 @@ import java.util.List;
  */
 public interface MemberService {
     /**
-     *
+     * 添加会员
+     * @param
+     * @throws Exception
+     */
+    void create(Member member) throws Exception;
+
+    /**
      * 所有的会员信息
-     *
      * @return
      * @throws Exception
      */
     List<Member> findAll() throws Exception;
+
+    /**
+     * 通过memberId,memberName查询会员信息
+     * @return
+     * @throws Exception
+     */
+    Member findById() throws Exception;
 
 }

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
+/**
+ * @author 陈俊旭
+ */
 @Data
 public class Shop implements Serializable {
     /**
@@ -61,6 +64,5 @@ public class Shop implements Serializable {
      */
     private String shopState;
 
-    private static final long serialVersionUID = 1L;
 }
 

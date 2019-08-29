@@ -1,2 +1,6 @@
 # Project exclude paths
 /target/
+.idea
+/src/test
+*.iml
+hs_err_pid*

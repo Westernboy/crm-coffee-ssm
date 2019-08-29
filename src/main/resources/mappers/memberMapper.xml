@@ -23,7 +23,8 @@
 
 
   <select id="findAll" resultMap="MemberResultMap">
-    SELECT m.member_id,
+    SELECT m.mid,
+           m.member_id,
            m.member_name,
            m.member_score,
            m.member_phone,
@@ -35,5 +36,44 @@
            s.s_manage_name
            FROM member m LEFT JOIN shop s ON m.register_shop_id = s.shop_id
   </select>
+
+  <insert id="create" parameterType="int">
+    INSERT INTO member(
+                       member_id,
+                       member_name,
+                       sex,
+                       member_phone,
+                       register_time,
+                       birthday,
+                       register_shop_id,
+                       member_level
+    ) VALUES (
+      #{memberId},
+      #{memberName},
+      #{sex},
+      #{memberPhone},
+      #{registerTime},
+      #{birthday},
+      #{registerShopId},
+      #{memberLevel})
+  </insert>
+
+    <select id="findById" resultMap="MemberResultMap">
+        SELECT m.mid,
+            m.member_id,
+            m.member_name,
+            m.member_score,
+            m.member_phone,
+            m.birthday,
+            m.register_time,
+            m.member_level,
+            s.shop_name,
+            s.shop_addr,
+            s.s_manage_name
+        FROM member m LEFT JOIN shop s ON m.register_shop_id = s.shop_id
+        WHERE m.member_id = #{memberId}
+    </select>
+
+
 
 </mapper>

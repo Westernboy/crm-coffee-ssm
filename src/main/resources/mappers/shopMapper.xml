@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coffee.ssm.mapper.ShopMapper">
+    <resultMap id="shopResultMap" type="com.coffee.ssm.entity.Shop">
+        <id property="sid" column="sid"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="shopAddr" column="shop_addr"/>
+        <result property="shopPhone" column="shop_phone"/>
+        <result property="shopImg" column="shop_img"/>
+        <result property="sManageId" column="s_manage_id"/>
+        <result property="sManageName" column="s_manage_name"/>
+        <result property="sManagePhone" column="s_manage_phone"/>
+        <result property="shopJoinTime" column="shop_join_time"/>
+        <result property="shopState" column="shop_state"/>
+    </resultMap>
+    <select id="findAll" resultMap="shopResultMap">
+        SELECT s.sid,
+               s.shop_name,
+               s.shop_addr,
+               s.shop_phone,
+               s.shop_img,
+               s.s_manage_name,
+               s.shop_phone,
+               s.shop_join_time,
+               s.shop_state
+               FROM shop s
+
+    </select>
+
+
+</mapper>
